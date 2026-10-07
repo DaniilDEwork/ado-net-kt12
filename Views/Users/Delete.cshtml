@@ -1,0 +1,20 @@
+@model User
+@{
+    ViewData["Title"] = "Удаление пользователя";
+}
+<h1>Удаление пользователя</h1>
+<p class="error">Пользователь и его профиль будут удалены</p>
+<dl class="details">
+    <dt>ID пользователя</dt><dd>@Model.UserId</dd>
+    <dt>Имя</dt><dd>@Model.Name</dd>
+    <dt>Почта</dt><dd>@Model.Email</dd>
+    <dt>ID профиля</dt><dd>@Model.Profile.UserId</dd>
+    <dt>Информация</dt><dd class="bio">@Model.Profile.Bio</dd>
+    <dt>Город</dt><dd>@(string.IsNullOrEmpty(Model.Profile.City) ? "Не указан" : Model.Profile.City)</dd>
+</dl>
+<form asp-action="DeleteConfirmed" asp-route-id="@Model.UserId" method="post">
+    <div class="actions">
+        <button class="danger" type="submit">Подтвердить удаление</button>
+        <a class="button" asp-action="Index">Отмена</a>
+    </div>
+</form>

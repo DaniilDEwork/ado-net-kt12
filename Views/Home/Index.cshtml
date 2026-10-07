@@ -1,0 +1,20 @@
+@model HomeModel
+@{
+    ViewData["Title"] = "Главная";
+}
+<h1>Управление профилями пользователей</h1>
+<p>У каждого пользователя есть один профиль с информацией о нём и городом</p>
+<div class="table-wrap">
+    <table>
+        <thead><tr><th>Данные</th><th>Количество</th></tr></thead>
+        <tbody>
+            <tr><td>Пользователи</td><td>@Model.UsersCount</td></tr>
+            <tr><td>Профили</td><td>@Model.ProfilesCount</td></tr>
+        </tbody>
+    </table>
+</div>
+<div class="actions">
+    <a class="button" asp-controller="Users" asp-action="Index">Список пользователей</a>
+    <a class="button" asp-controller="Profiles" asp-action="Index">Список профилей</a>
+</div>
+<p class="hint">Пользователь и профиль создаются вместе, при удалении пользователя его профиль также удаляется</p>

@@ -1,0 +1,7 @@
+@model ProfileForm
+<label asp-for="Bio">Информация о пользователе</label>
+<textarea asp-for="Bio" rows="3" maxlength="1000"></textarea>
+<span asp-validation-for="Bio"></span>
+<label asp-for="City">Город</label>
+<input asp-for="City" maxlength="100" />
+<span asp-validation-for="City"></span>

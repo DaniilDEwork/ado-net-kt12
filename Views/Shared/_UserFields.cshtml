@@ -1,0 +1,15 @@
+@model UserForm
+<div class="form-grid">
+    <div>
+        <label asp-for="Name">Имя пользователя</label>
+        <input asp-for="Name" maxlength="100" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Email">Электронная почта</label>
+        <input asp-for="Email" type="email" maxlength="100" />
+        <span asp-validation-for="Email"></span>
+    </div>
+</div>
+<h2>Профиль</h2>
+<partial name="_ProfileFields" model="Model" />

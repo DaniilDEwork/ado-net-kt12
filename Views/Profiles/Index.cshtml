@@ -1,0 +1,32 @@
+@model List<UserProfile>
+@{
+    ViewData["Title"] = "Профили";
+}
+<h1>Профили</h1>
+<a class="button" asp-controller="Users" asp-action="Create">Добавить пользователя с профилем</a>
+@if (Model.Count == 0)
+{
+    <p>Список профилей пуст</p>
+}
+else
+{
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>ID профиля</th><th>Пользователь</th><th>Информация</th><th>Город</th><th>Действия</th></tr></thead>
+            <tbody>
+            @foreach (var profile in Model)
+            {
+                <tr>
+                    <td>@profile.UserId</td><td>@profile.User.Name</td><td class="bio">@profile.Bio</td>
+                    <td>@(string.IsNullOrEmpty(profile.City) ? "Не указан" : profile.City)</td>
+                    <td><div class="table-actions">
+                        <a asp-action="Details" asp-route-id="@profile.UserId">Просмотр</a>
+                        <a asp-action="Edit" asp-route-id="@profile.UserId">Изменить</a>
+                        <a asp-controller="Users" asp-action="Delete" asp-route-id="@profile.UserId">Удалить</a>
+                    </div></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+}

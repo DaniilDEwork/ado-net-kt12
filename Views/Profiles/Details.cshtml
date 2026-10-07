@@ -1,0 +1,17 @@
+@model UserProfile
+@{
+    ViewData["Title"] = "Профиль";
+}
+<h1>Профиль пользователя</h1>
+<dl class="details">
+    <dt>ID профиля</dt><dd>@Model.UserId</dd>
+    <dt>Пользователь</dt><dd>@Model.User.Name</dd>
+    <dt>Почта</dt><dd>@Model.User.Email</dd>
+    <dt>Информация</dt><dd class="bio">@Model.Bio</dd>
+    <dt>Город</dt><dd>@(string.IsNullOrEmpty(Model.City) ? "Не указан" : Model.City)</dd>
+</dl>
+<div class="actions">
+    <a class="button" asp-action="Edit" asp-route-id="@Model.UserId">Изменить профиль</a>
+    <a class="button" asp-controller="Users" asp-action="Details" asp-route-id="@Model.UserId">Пользователь</a>
+    <a class="button" asp-action="Index">К списку</a>
+</div>
